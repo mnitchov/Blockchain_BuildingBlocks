@@ -55,7 +55,7 @@ Be sure to include any preliminary setup information, such as installing depende
 - Paste the public addresses of both nodes Where it asks "Which accounts are allowed to seal? (mandatory at least one)"
 - Repeat for "Which accounts should be pre-funded? (advisable at least one)"
 - Enter "no" for "Should the precompile-addresses (0x1 .. 0xff) be pre-funded with 1 wei? (advisable yes)"
-- Enter a chian network id. For this network we chose to use "456"
+- Enter a chain network id. For this network we chose to use "456"
 
 ![2](https://user-images.githubusercontent.com/77086043/124188367-0501d600-da74-11eb-9984-9ca52c3e4e87.PNG)
 
