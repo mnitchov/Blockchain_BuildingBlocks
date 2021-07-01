@@ -36,12 +36,16 @@ Be sure to include any preliminary setup information, such as installing depende
 - Assuming we've already downloaded geth, we want to copy those downloaded files to a new directory, in this case called 'Unit18'.
 - Next, open Git Bash and navigate to the 'Unit18' folder. From there we want to create folders for two nodes labelled 'node1' and 'node2'.
 - After this, we want to activate accounts for each node by passing: 
-       - $ ./geth account new --datadir node1
-       - $ ./geth account new --datadir node2
+       
+       $ ./geth account new --datadir node1
+       $ ./geth account new --datadir node2
 
 - You will need to create a password for each node. Save the Public Address and Path of the Secret Key for each node. Copy these addresses (four in total) to a notepad, we will need these later.
 
-- Run $ ./puppeth
+- Run:
+
+       $ ./puppeth
+
 - Specify a network name, in this case we used 'unit18'
 - Choose 2, "Configure new genesis"
 - Choose 1, "Create new genesis from scratch"
@@ -68,24 +72,30 @@ Be sure to include any preliminary setup information, such as installing depende
 
 - Now we want to initialize the nodes. 
 - Enter: 
-       - $ ./geth init puppernet/unit18.json --datadir node1
-       - $ ./geth init puppernet/unit18.json --datadir node2
+                    
+       $ ./geth init puppernet/unit18.json --datadir node1
+       $ ./geth init puppernet/unit18.json --datadir node2
 - You should see "Successfully wrote genesis state" for each command
 
 ![3](https://user-images.githubusercontent.com/77086043/124188411-164ae280-da74-11eb-9ffb-c73b175524c8.PNG)
 
 - After this is complete we want to start mining.
 - First enter:
-       - $ ./geth --datadir node1 --unlock "SEALER_ONE_ADDRESS" --mine --rpc --allow-insecure-unlock
+ 
+       $ ./geth --datadir node1 --unlock "SEALER_ONE_ADDRESS" --mine --rpc --allow-insecure-unlock
+
 - Enter your password when prompted.
-       - The "SEALER_ONE_ADDRESS" represents the public address from node1, replace it with such. 
-       - Look for a message which says "Started P2P networking". 
-       - Copy the message which starts with "enode://..." until "...30303"
+- The "SEALER_ONE_ADDRESS" represents the public address from node1, replace it with such. 
+- Look for a message which says "Started P2P networking". 
+- Copy the message which starts with "enode://..." until "...30303"
 - Paste this whole entry to your notepad file and label it "node1 Enode"
 - We should see a message which says "Commit new mining work" to know it's working.
 
 - Open a new Git Bash window and navigate to the 'Unit18' folder.
-- Enter $ ./geth --datadir node2 --unlock "SEALER_TWO_ADDRESS" --mine --port 30304 --bootnodes "enode://SEALER_ONE_ENODE_ADDRESS@127.0.0.1:30303" --ipcdisable --allow-insecure-unlock
+- Enter:
+
+      $ ./geth --datadir node2 --unlock "SEALER_TWO_ADDRESS" --mine --port 30304 --bootnodes "enode://SEALER_ONE_ENODE_ADDRESS@127.0.0.1:30303" - ipcdisable --allow-insecure-unlock        
+      
 - The "SEALER_TWO_ADDRESS" is the node2 public address, replace it with such. The "SEALER_ONE_ENODE_ADDRESS" is the node1 Enode, replace it with such.
 - You should see the same "Commit new mining work" message as well as "Imported new chain segment" to confirm the two nodes are connected.
 
